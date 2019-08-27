@@ -2,12 +2,13 @@ import 'package:roguelike/jogador.dart';
 import 'package:roguelike/mundo.dart';
 import 'package:roguelike/mundo_builder.dart';
 import 'package:roguelike/ponto_2d.dart';
+import 'package:roguelike/criatura.dart';
 
 // Classe que define como o jogo funciona
 class Roguelike {
   // Constantes
   static final String SIMBOLO_PAREDE = "#";
-  static final int QUANTIDADE_CRIATUDAS = 60;
+  static final int QUANTIDADE_CRIATUDAS = 20;
   static final int QUANTIDADE_VIDAS = 2;
   static final double FATOR_PROFUNDIDADE = 2.0;
 
@@ -41,7 +42,9 @@ class Roguelike {
     _mundo = MundoBuilder(_largura, _altura)
         .preencher(SIMBOLO_PAREDE, true)
         .criarCaminho(posicao.x, posicao.y, passos)
-        .criarCriaturas(QUANTIDADE_CRIATUDAS)
+        .criarCriaturas(QUANTIDADE_CRIATUDAS, Criatura.SIMBOLO_CRIATURA_CARNEIRO)  //cria carneiro   
+        .criarCriaturas(QUANTIDADE_CRIATUDAS, Criatura.SIMBOLO_CRIATURA_LOBO)   //cria lobo
+        //.criarCriaturas(QUANTIDADE_CRIATUDAS, Criatura.SIMBOLO_CRIATURA)     //cria criatura padrão
         .build();
 
     // Coloca o jogador dentro do mundo

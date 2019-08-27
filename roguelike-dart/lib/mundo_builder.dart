@@ -59,7 +59,7 @@ class MundoBuilder {
 
   // Método que adiciona criaturas no mapa
   // @quantidadeCriaturas : número de criaturas que queremos colocar no mapa
-  MundoBuilder criarCriaturas(int quantidadeCriaturas) {
+  MundoBuilder criarCriaturas(int quantidadeCriaturas, String SIMBOLO_CRIATURAS) {
     // cria um número aleatório
     Random aleatorio = Random();
     int x, y;
@@ -71,8 +71,16 @@ class MundoBuilder {
         y = aleatorio.nextInt(altura);
       } while (mapa[x][y].bloqueado);
 
+      if(SIMBOLO_CRIATURAS == Criatura.SIMBOLO_CRIATURA_CARNEIRO){
+        criaturas.add(Criatura(Ponto2D(x, y), Criatura.SIMBOLO_CRIATURA_CARNEIRO));
+      }else{
+        criaturas.add(Criatura(Ponto2D(x, y), SIMBOLO_CRIATURAS)); //VAI SER LOBO
+      }
+
       // Adiciona a criatura na lista de criaturas
-      criaturas.add(Criatura(Ponto2D(x, y), Criatura.SIMBOLO_CRIATURA));
+      //criaturas.add(Criatura(Ponto2D(x, y), SIMBOLO_CRIATURAS));
+      //criaturas.add(Criatura(Ponto2D(x, y), Criatura.SIMBOLO_CRIATURA_CARNEIRO));
+      //criaturas.add(Criatura(Ponto2D(x, y), Criatura.SIMBOLO_CRIATURA_LOBO));
     }
     return this;
   }
